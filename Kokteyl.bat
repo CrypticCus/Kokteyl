@@ -88,7 +88,7 @@ for %%i in (SecHealthUI) do (for /f %%a in ('reg query "%key%" /f %%i /k 2^>nul 
 
 :: -
 
-:: Uninstall Microsoft Edge Browser
+:: Microsoft Edge Browser
 taskkill /F /IM "MicrosoftEdgeUpdate.exe" >NUL 2>&1
 taskkill /F /IM "MicrosoftEdgeUpdateCore.exe" >NUL 2>&1
 taskkill /F /IM "MicrosoftEdgeUpdateOnDemand.exe" >NUL 2>&1
@@ -138,7 +138,22 @@ del /f /q "%SystemRoot%\System32\config\systemprofile\AppData\Roaming\Microsoft\
 
 :: -
 
-:: Uninstall OneDrive
+:: Google Chrome
+taskkill /f /im software_reporter_tool.exe >NUL 2>&1
+icacls "%localappdata%\Google\Software Reporter Tool" /inheritance:e >NUL 2>&1
+icacls "%localappdata%\Google\Chrome\User Data\SwReporter" /inheritance:e >NUL 2>&1
+@RD /S /Q "%localappdata%\Google\Software Reporter Tool\*" >NUL 2>&1
+del /f /q "%localappdata%\Google\Software Reporter Tool\*" >NUL 2>&1
+@RD /S /Q "%localappdata%\Google\Chrome\User Data\SwReporter\*" >NUL 2>&1
+del /f /q "%localappdata%\Google\Chrome\User Data\SwReporter\*" >NUL 2>&1
+mkdir "%localappdata%\Google\Software Reporter Tool" >NUL 2>&1
+mkdir "%localappdata%\Google\Chrome\User Data\SwReporter" >NUL 2>&1
+icacls "%localappdata%\Google\Software Reporter Tool" /inheritance:r >NUL 2>&1
+icacls "%localappdata%\Google\Chrome\User Data\SwReporter" /inheritance:r >NUL 2>&1
+
+:: -
+
+:: OneDrive
 taskkill /im OneDriveSetup.exe >Nul 2>&1
 tskill /a OneDriveSetup >Nul 2>&1
 Reg Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "OneDriveSetup" /f >Nul 2>&1
@@ -198,18 +213,14 @@ Wallet
 
 :: -
 
-:: Google Chrome
-taskkill /f /im software_reporter_tool.exe >NUL 2>&1
-icacls "%localappdata%\Google\Software Reporter Tool" /inheritance:e >NUL 2>&1
-icacls "%localappdata%\Google\Chrome\User Data\SwReporter" /inheritance:e >NUL 2>&1
-@RD /S /Q "%localappdata%\Google\Software Reporter Tool\*" >NUL 2>&1
-del /f /q "%localappdata%\Google\Software Reporter Tool\*" >NUL 2>&1
-@RD /S /Q "%localappdata%\Google\Chrome\User Data\SwReporter\*" >NUL 2>&1
-del /f /q "%localappdata%\Google\Chrome\User Data\SwReporter\*" >NUL 2>&1
-mkdir "%localappdata%\Google\Software Reporter Tool" >NUL 2>&1
-mkdir "%localappdata%\Google\Chrome\User Data\SwReporter" >NUL 2>&1
-icacls "%localappdata%\Google\Software Reporter Tool" /inheritance:r >NUL 2>&1
-icacls "%localappdata%\Google\Chrome\User Data\SwReporter" /inheritance:r >NUL 2>&1
+:: Refresh
+ping -n 1 microsoft.com > nul
+if "%errorlevel%" == "0" goto Connected
+if "%errorlevel%" == "1" goto NotConnected
+:Connected
+C:\MicrosoftCorporation\Tools\DnsJumper\DnsJumper.exe /F /T >Nul 2>&1
+:NotConnected
+C:\MicrosoftCorporation\Tools\NSudo\NSudo.exe -U:T -P:E regedit.exe /s C:\MicrosoftCorporation\Kokteyl\Kokteyl.reg >Nul 2>&1
 
 :: -
 
