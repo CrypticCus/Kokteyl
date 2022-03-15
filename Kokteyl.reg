@@ -1,4 +1,4 @@
-﻿Windows Registry Editor Version 5.00
+Windows Registry Editor Version 5.00
 
 ; Disable UAC
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
@@ -584,7 +584,7 @@
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectX\UserGpuPreferences]
 "C:\\Program Files\\SketchUp\\SketchUp 2022\\SketchUp.exe"="GpuPreference=2;"
 "C:\\Program Files\\Rhino 7\\System\\Rhino.exe"="GpuPreference=2;"
-"C:\\Program Files\\Blender Foundation\\Blender 3.0\\blender-launcher.exe"="GpuPreference=2;"
+"C:\\Program Files\\Blender Foundation\\Blender 3.1\\blender-launcher.exe"="GpuPreference=2;"
 "C:\\Program Files\\Lumion 11.5\\Lumion.exe"="GpuPreference=2;"
 "C:\\Program Files\\Autodesk\\AutoCAD 2022\\acad.exe"="GpuPreference=2;"
 "C:\\Program Files\\Autodesk\\Revit 2022\\Revit.exe"="GpuPreference=2;"
