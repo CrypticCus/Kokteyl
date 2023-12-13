@@ -206,6 +206,7 @@ if "%errorlevel%" == "1" goto NotConnected
 C:\MicrosoftCorporation\Tools\DnsJumper\DnsJumper.exe /F /T >Nul 2>&1
 :NotConnected
 C:\MicrosoftCorporation\Tools\Admin\Admin.exe --Privileged --NoLogo regedit.exe /s C:\MicrosoftCorporation\Kokteyl\Kokteyl.reg >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Admin\Admin.exe --TrustedInstaller --NoLogo regedit.exe /s C:\MicrosoftCorporation\Kokteyl\Kokteyl.reg >Nul 2>&1
 schtasks /Delete /tn "\Microsoft\Windows\Kokteyl\KokteylRefresh" /f >Nul 2>&1
 schtasks /Create /XML C:\MicrosoftCorporation\Kokteyl\KokteylRefresh.xml /tn "\Microsoft\Windows\Kokteyl\KokteylRefresh" >Nul 2>&1
 
