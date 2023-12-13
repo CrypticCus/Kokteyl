@@ -121,6 +121,17 @@
 ; Remove Outlook for Windows
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate]
 
+; Set Downloads Grouping To None
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}]
+"ColumnList"="prop:0(34)System.ItemNameDisplay;0System.DateModified;0System.ItemTypeText;0System.Size;1System.DateCreated;1System.Author;1System.Category;1System.Keywords;1System.Title"
+"GroupAscending"=dword:00000000
+"GroupBy"="System.Null"
+"LogicalViewMode"=dword:00000001
+"Name"="NoName"
+"Order"=dword:00000000
+"PrimaryProperty"="prop:System.ItemNameDisplay"
+"SortByList"="prop:System.ItemNameDisplay" 
+
 ; Hide Recent Files In Quick Access
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "ShowRecent"=dword:00000000
