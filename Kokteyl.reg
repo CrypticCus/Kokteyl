@@ -35,6 +35,14 @@
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE]
 "BypassNRO"=dword:00000001
 
+; Edit Region
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion]
+"DeviceRegion"=dword:00000244
+
+[HKEY_USERS\.DEFAULT\Control Panel\International\Geo]
+"Nation"="244"
+"Name"="US"
+
 ; Take Ownership
 [HKEY_CLASSES_ROOT\*\Shell\Ownership]
 @="Ownership"
@@ -74,17 +82,241 @@
 @="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c"
 "IsolatedCommand"="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c"
 
-; Edit Region
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion]
-"DeviceRegion"=dword:00000244
-
-[HKEY_USERS\.DEFAULT\Control Panel\International\Geo]
-"Nation"="244"
-"Name"="US"
-
 ; Enable Sudo
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo]
 "Enabled"=dword:00000003
+
+; To Allow Mapped Drives To Be Available In Elevated PowerShell
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableLinkedConnections"=dword:00000001
+
+; Remove Linux From Navigation Pane In File Explorer
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{B2B4A4D1-2754-4140-A2EB-9A76D9D7CDC6}]
+@="Linux"
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+; Remove Open Linux Shell Here From Right Click Context Menu
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\WSL]
+[-HKEY_CLASSES_ROOT\Directory\shell\WSL]
+[-HKEY_CLASSES_ROOT\Drive\shell\WSL]
+
+; Remove Open Windows Terminal Here From Right Click Context Menu
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
+"{9F156763-7844-4DC4-B2B1-901F640F5155}"=""
+
+; Remove Open Command Prompt Here From Right Click Context Menu
+[-HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt]
+[-HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt]
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt]
+[-HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt]
+[-HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt]
+
+; Remove Open Powershell Here From Right Click Context Menu
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell]
+[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell]
+[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell]
+[-HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\PowerShell]
+[-HKEY_CLASSES_ROOT\DesktopBackground\Shell\PowerShell7x64]
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell7x64]
+[-HKEY_CLASSES_ROOT\Directory\ContextMenus\PowerShell7x64]
+[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell7x64]
+[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell7x64]
+[-HKEY_CLASSES_ROOT\LibraryFolder\background\shell\PowerShell7x64]
+[-HKEY_CLASSES_ROOT\DesktopBackground\Shell\PowerShell7x86]
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell7x86]
+[-HKEY_CLASSES_ROOT\Directory\ContextMenus\PowerShell7x86]
+[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell7x86]
+[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell7x86]
+[-HKEY_CLASSES_ROOT\LibraryFolder\background\shell\PowerShell7x86]
+
+; Add Terminal To Shift Right Click Context Menu
+; Desktop
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal]
+"Icon"=""
+"MUIVerb"="Terminal"
+"Extended"=""
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\CMD]
+@="Command Prompt"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5323"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\CMD\Command]
+@="cmd /c echo|set/p=\"%V\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\PowerShell]
+@="PowerShell"
+"HasLUAShield"=""
+"Icon"="PowerShell.exe"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\PowerShell\Command]
+@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\LinuxShell]
+@="LinuxShell"
+"HasLUAShield"=""
+"Icon"="WSL.exe"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\LinuxShell\Command]
+@="wsl.exe --cd \"%V\""
+
+; Directory
+[HKEY_CLASSES_ROOT\Directory\Shell\Terminal]
+"Icon"=""
+"MUIVerb"="Terminal"
+"Extended"=""
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\CMD]
+@="Command Prompt"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5323"
+
+[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\CMD\Command]
+@="cmd /c echo|set/p=\"%L\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\PowerShell]
+@="PowerShell"
+"HasLUAShield"=""
+"Icon"="PowerShell.exe"
+
+[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\PowerShell\Command]
+@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\LinuxShell]
+@="LinuxShell"
+"HasLUAShield"=""
+"Icon"="WSL.exe"
+
+[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\LinuxShell\Command]
+@="wsl.exe --cd \"%V\""
+
+; Directory
+[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal]
+"Icon"=""
+"MUIVerb"="Terminal"
+"Extended"=""
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\CMD]
+@="Command Prompt"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5323"
+
+[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\CMD\Command]
+@="cmd /c echo|set/p=\"%V\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\PowerShell]
+@="PowerShell"
+"HasLUAShield"=""
+"Icon"="PowerShell.exe"
+
+[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\PowerShell\Command]
+@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\LinuxShell]
+@="LinuxShell"
+"HasLUAShield"=""
+"Icon"="WSL.exe"
+
+[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\LinuxShell\Command]
+@="wsl.exe --cd \"%V\""
+
+; Drive
+[HKEY_CLASSES_ROOT\Drive\Shell\Terminal]
+"Icon"=""
+"MUIVerb"="Terminal"
+"Extended"=""
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\CMD]
+@="Command Prompt"
+"HasLUAShield"=""
+"Icon"="imageres.dll,-5323"
+
+[HKEY_CLASSES_ROOT\Drive\Shell\CommandPrompt\Shell\CMD\Command]
+@="cmd /c echo|set/p=\"%L\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\PowerShell]
+@="PowerShell"
+"HasLUAShield"=""
+"Icon"="PowerShell.exe"
+
+[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\PowerShell\Command]
+@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
+
+[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\LinuxShell]
+@="LinuxShell"
+"HasLUAShield"=""
+"Icon"="WSL.exe"
+
+[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\LinuxShell\Command]
+@="wsl.exe --cd \"%V\""
+
+; Show Hash Value
+[HKEY_CLASSES_ROOT\*\Shell\Hash]
+"Icon"=""
+"MUIVerb"="Hash"
+"Extended"=""
+"SubCommands"=""
+
+; SHA1
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\01Menu]
+"MUIVerb"="SHA1"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\01Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm SHA1 | format-list"
+
+; SHA256
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\02Menu]
+"MUIVerb"="SHA256"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\02Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm SHA256 | format-list"
+
+; SHA384
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\03Menu]
+"MUIVerb"="SHA384"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\03Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm SHA384 | format-list"
+
+; SHA512
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\04Menu]
+"MUIVerb"="SHA512"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\04Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm SHA512 | format-list"
+
+; MACTripleDES
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\05Menu]
+"MUIVerb"="MACTripleDES"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\05Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm MACTripleDES | format-list"
+
+; MD5
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\06Menu]
+"MUIVerb"="MD5"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\06Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm MD5 | format-list"
+
+; RIPEMD160
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\07Menu]
+"MUIVerb"="RIPEMD160"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\07Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm RIPEMD160 | format-list"
+
+; Allget-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\08Menu]
+"CommandFlags"=dword:00000020
+"MUIVerb"="Show All"
+
+[HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\08Menu\Command]
+@="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm SHA1 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm SHA256 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm SHA384 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm SHA512 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm MACTripleDES | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm MD5 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm RIPEMD160 | format-list"
 
 ; Increase Wallpaper Quality
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -116,6 +348,28 @@
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "HideRecommendedSection"=dword:00000001
+
+; Disable Copilot
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsCopilot]
+"TurnOffWindowsCopilot"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot]
+"TurnOffWindowsCopilot"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+"HubsSidebarEnabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ShowCopilotButton"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings]
+"AutoOpenCopilotLargeScreens"=dword:00000000
 
 ; Launch To This PC
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -791,142 +1045,6 @@ E0,F6,C5,D5,0E,CA,50,00,00
 "Microsoft.Office.UXPlatform.FluentSVRefresh"="true"
 "Microsoft.Office.UXPlatform.RibbonTouchOptimization"="true"
 "Microsoft.Office.UXPlatform.FluentSVRibbonOptionsMenu"="true"
-
-; Remove Linux From Navigation Pane In File Explorer
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{B2B4A4D1-2754-4140-A2EB-9A76D9D7CDC6}]
-@="Linux"
-"System.IsPinnedToNameSpaceTree"=dword:00000000
-
-; Remove Open Linux Shell Here From Right Click Context Menu
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\WSL]
-[-HKEY_CLASSES_ROOT\Directory\shell\WSL]
-[-HKEY_CLASSES_ROOT\Drive\shell\WSL]
-
-; Remove Open Windows Terminal Here From Right Click Context Menu
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
-"{9F156763-7844-4DC4-B2B1-901F640F5155}"=""
-
-; Remove Open Command Prompt Here From Right Click Context Menu
-[-HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt]
-[-HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt]
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt]
-[-HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt]
-[-HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt]
-
-; Remove Open Powershell Here From Right Click Context Menu
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell]
-[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell]
-[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell]
-[-HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\PowerShell]
-[-HKEY_CLASSES_ROOT\DesktopBackground\Shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\LibraryFolder\background\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\DesktopBackground\Shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\LibraryFolder\background\shell\PowerShell7x86]
-
-; Add Terminal To Shift Right Click Context Menu
-; Desktop
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal]
-"Icon"=""
-"MUIVerb"="Terminal"
-"Extended"=""
-"SubCommands"=""
-
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\CMD]
-@="Command Prompt"
-"HasLUAShield"=""
-"Icon"="imageres.dll,-5323"
-
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\CMD\Command]
-@="cmd /c echo|set/p=\"%V\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\PowerShell]
-@="PowerShell"
-"HasLUAShield"=""
-"Icon"="powerShell.exe"
-
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Terminal\Shell\PowerShell\Command]
-@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
-
-; Directory
-[HKEY_CLASSES_ROOT\Directory\Shell\Terminal]
-"Icon"=""
-"MUIVerb"="Terminal"
-"Extended"=""
-"SubCommands"=""
-
-[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\CMD]
-@="Command Prompt"
-"HasLUAShield"=""
-"Icon"="imageres.dll,-5323"
-
-[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\CMD\Command]
-@="cmd /c echo|set/p=\"%L\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\PowerShell]
-@="PowerShell"
-"HasLUAShield"=""
-"Icon"="powerShell.exe"
-
-[HKEY_CLASSES_ROOT\Directory\Shell\Terminal\Shell\PowerShell\Command]
-@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
-
-; Directory
-[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal]
-"Icon"=""
-"MUIVerb"="Terminal"
-"Extended"=""
-"SubCommands"=""
-
-[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\CMD]
-@="Command Prompt"
-"HasLUAShield"=""
-"Icon"="imageres.dll,-5323"
-
-[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\CMD\Command]
-@="cmd /c echo|set/p=\"%V\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\PowerShell]
-@="PowerShell"
-"HasLUAShield"=""
-"Icon"="powerShell.exe"
-
-[HKEY_CLASSES_ROOT\Directory\Background\Shell\Terminal\Shell\PowerShell\Command]
-@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
-
-; Drive
-[HKEY_CLASSES_ROOT\Drive\Shell\Terminal]
-"Icon"=""
-"MUIVerb"="Terminal"
-"Extended"=""
-"SubCommands"=""
-
-[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\CMD]
-@="Command Prompt"
-"HasLUAShield"=""
-"Icon"="imageres.dll,-5323"
-
-[HKEY_CLASSES_ROOT\Drive\Shell\CommandPrompt\Shell\CMD\Command]
-@="cmd /c echo|set/p=\"%L\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
-
-[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\PowerShell]
-@="PowerShell"
-"HasLUAShield"=""
-"Icon"="powerShell.exe"
-
-[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\PowerShell\Command]
-@="PowerShell -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd %V && start PowerShell -NoExit && exit' -Verb RunAs\""
-
-; To Allow Mapped Drives To Be Available In Elevated PowerShell
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"EnableLinkedConnections"=dword:00000001
 
 ; GPU Material Error Fix - Enable Hardware Accelerated GPU Scheduling
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\GraphicsDrivers]
