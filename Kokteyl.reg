@@ -450,14 +450,36 @@
 "GameDVR_DXGIHonorFSEWindowsCompatible"=dword:00000000
 "GameDVR_EFSEFeatureFlags"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
-"value"=dword:00000001
-
+; Enable Capture
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
 "AllowGameDVR"=-
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
+"value"=dword:00000001
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR]
 "AppCaptureEnabled"=dword:00000000
+
+; Set Capture Lenght To 30 Min
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR]
+"MaximumRecordLength"=hex(b):00,34,e2,30,04,00,00,00
+
+; Set Capture Quality To 60 FPS
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR]
+"VideoEncodingFrameRateMode"=dword:00000001
+
+; Set Capture Quality To High
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR]
+"VideoEncodingBitrateMode"=dword:00000001
+
+; Turn On Capture Audio And Mute System And App Audio
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR]
+"AudioCaptureEnabled"=dword:00000001
+"EnablePerAppAudio"=dword:00000001
+
+; Turn On Historical Capture For 30 Secconds
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR]
+"HistoricalCaptureEnabled"=dword:00000001
 
 ; Disable Help Stickers
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
@@ -478,6 +500,14 @@
 ; Turn On End Task in Taskbar By Right Click
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeveloperSettings]
 "TaskbarEndTask"=dword:00000001
+
+; Turn Off Narrator Shortcut
+[HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam]
+"WinEnterLaunchEnabled"=dword:00000000
+
+; Enable This PC To Access Mobile Devices
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Mobility]
+"CrossDeviceEnabled"=dword:00000001
 
 ; Enable Shake To Minimize Windows
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
