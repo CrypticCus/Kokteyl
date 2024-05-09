@@ -489,10 +489,12 @@
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "NoWindowMinimizingShortcuts"=-
 
-; Disable Get Fun Facts Tips and More on Lock Screen
+; Disable Get Fun Facts Tips, Tricks and More on Lock Screen
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "RotatingLockScreenOverlayEnabled"=dword:00000000
 "SubscribedContent-338387Enabled"=dword:00000000
+
+; Get Tips and Suggestions When Using Windows
 "SubscribedContent-338389Enabled"=dword:00000000
 
 ; Disable Suggested Content In Settings App
@@ -530,6 +532,14 @@
 ; Disable Tailored Experiences
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
 "TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
+
+; "Show Recommendations For Tips, Shortcuts, New Apps, and More" on Start Menu
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_IrisRecommendations"=dword:00000000
+
+; Show Microsoft Account-Related Notifications on Start Menu
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_AccountNotifications"=dword:00000000
 
 ; Disable Required Diagnostic Data
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack]
