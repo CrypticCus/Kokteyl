@@ -531,6 +531,22 @@
 "RotatingLockScreenOverlayEnabled"=dword:00000000
 "SubscribedContent-338387Enabled"=dword:00000000
 
+; Disable Location Services
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
+"Value"="Deny"
+
+; Disable Location Allow Override
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\UserLocationOverridePrivacySetting]
+"Value"=dword:00000000
+
+; Disable Let Apps Access Your Location
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
+"Value"="Deny"
+
+; Disable Notify When Apps Request Location
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
+"ShowGlobalPrompts"=dword:00000000
+
 ; Get Tips and Suggestions When Using Windows
 "SubscribedContent-338389Enabled"=dword:00000000
 
