@@ -353,6 +353,15 @@
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "HideRecommendedSection"=dword:00000001
 
+; Enable Network Shared Printer
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC]
+"RpcUseNamedPipeProtocol"=dword:00000001
+"RpcProtocols"=dword:00000007
+"ForceKerberosForRpc"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print]
+"RpcAuthnLevelPrivacyEnabled"=dword:00000000
+
 ; Disable Recall Snapshots Feature
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsAI]
 "DisableAIDataAnalysis"=dword:00000001
