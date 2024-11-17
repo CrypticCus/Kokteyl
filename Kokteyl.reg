@@ -339,6 +339,10 @@
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager]
 "ConfirmationCheckBoxDoForAll"=dword:00000001
 
+; Show More Details In File Transfer
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager]
+"EnthusiastMode"=dword:00000001
+
 ; Disable Font Blocking
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\MitigationOptions]
 "MitigationOptions_FontBocking"=-
@@ -478,12 +482,12 @@
 [HKEY_CURRENT_USER\Software\Microsoft\GameBar]
 "AutoGameModeEnabled"=dword:00000001
 
-; Enable Windowed Optimizations
+; Enable Windowed Optimizations - Enable Variable Refresh Rate - Disable AutoHDR
 [HKEY_CURRENT_USER\Software\Microsoft\DirectX\GraphicsSettings]
 "SwapEffectUpgradeCache"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\DirectX\UserGpuPreferences]
-"DirectXUserGlobalSettings"="SwapEffectUpgradeEnable=1;"
+"DirectXUserGlobalSettings"="VRROptimizeEnable=1;AutoHDREnable=0;SwapEffectUpgradeEnable=1;"
 
 ; Enable Fullscreen Optimizations
 [HKEY_CURRENT_USER\System\GameConfigStore]
@@ -539,10 +543,6 @@
 ; Turn Off Error Reporting
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
 "Disabled"=dword:00000001
-
-; Turn On End Task in Taskbar By Right Click
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeveloperSettings]
-"TaskbarEndTask"=dword:00000001
 
 ; Turn Off Narrator Shortcut
 [HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam]
@@ -708,6 +708,10 @@
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock]
 "AllowDevelopmentWithoutDevLicense"=dword:00000001
 "AllowAllTrustedApps"=dword:00000001
+
+; Turn On End Task in Taskbar By Right Click
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeveloperSettings]
+"TaskbarEndTask"=dword:00000001 
 
 ; Turn off SmartScreen
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
