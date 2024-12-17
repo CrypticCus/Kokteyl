@@ -17,6 +17,7 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Ad
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Chat" /v ChatIcon /t REG_DWORD /d 3 /f >NUL 2>&1
 
 :: Uninstall Teams
+goto SkipTeamsUninstall
 taskkill /F /IM "Teams.exe" >NUL 2>&1
 taskkill /F /IM "MSTeams.exe" >NUL 2>&1
 taskkill /F /IM "Update.exe" >NUL 2>&1
@@ -44,6 +45,7 @@ del /f /q "%localappdata%\Microsoft\TeamsMeetingAddin\*" >NUL 2>&1
 del /f /q "%localappdata%\Microsoft\TeamsPresenceAddin\*" >NUL 2>&1
 del /f /q "%appdata%\Teams\*" >NUL 2>&1
 del /f /q "%appdata%\Microsoft\Teams\*" >NUL 2>&1
+:SkipTeamsUninstall
 
 :: Microsoft Edge Browser
 taskkill /F /IM "MicrosoftEdgeUpdate.exe" >NUL 2>&1
