@@ -204,17 +204,6 @@ ping -n 1 google.com > nul
 if "%errorlevel%" == "0" goto Connected
 if "%errorlevel%" == "1" goto NotConnected
 :Connected
-C:\MicrosoftCorporation\Tools\DnsJumper\DnsJumper.exe /F /T >Nul 2>&1
-ping 127.0.0.1 -n 5 >Nul 2>&1
-:: Deleting Address Translation tables 
-arp -d *
-:: NetBIOS / WINS - Deleting and Refreshing Cache 
-nbtstat -R
-nbtstat -RR
-:: Deleting DNS resolver cache 
-ipconfig /flushdns
-:: Refresh DHCP leases and re-registering DNS names 
-ipconfig /registerdns
 :NotConnected
 C:\MicrosoftCorporation\Tools\Admin\Admin.exe --Privileged --NoLogo regedit.exe /s C:\MicrosoftCorporation\Kokteyl\Kokteyl.reg >Nul 2>&1
 C:\MicrosoftCorporation\Tools\Admin\Admin.exe --TrustedInstaller --NoLogo regedit.exe /s C:\MicrosoftCorporation\Kokteyl\Kokteyl.reg >Nul 2>&1
