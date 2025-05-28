@@ -33,7 +33,7 @@
 "AllowUpgradesWithUnsupportedTPMOrCPU"=dword:00000001
 
 [HKEY_CURRENT_USER\Control Panel\UnsupportedHardwareNotificationCache]
-"SV1"=dword:00000000
+"SV1"=-
 "SV2"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE]
