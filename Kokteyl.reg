@@ -384,6 +384,18 @@
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print]
 "RpcAuthnLevelPrivacyEnabled"=dword:00000000
 
+; Disable Emoji
+[HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7]
+"EmojiAndMoreIconVisibilityState"=dword:00000000
+
+; Disable Share Any Window From Taskbar
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"TaskbarSn"=dword:00000000
+
+; Disable Resume
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CrossDeviceResume\Configuration]
+"IsResumeAllowed"=dword:00000000
+
 ; Disable Recall Snapshots Feature
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsAI]
 "DisableAIDataAnalysis"=dword:00000001
