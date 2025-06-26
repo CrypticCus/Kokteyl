@@ -33,8 +33,11 @@
 "AllowUpgradesWithUnsupportedTPMOrCPU"=dword:00000001
 
 [HKEY_CURRENT_USER\Control Panel\UnsupportedHardwareNotificationCache]
-"SV1"=-
+"SV1"=dword:00000000
 "SV2"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"HideUnsupportedHardwareNotifications"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE]
 "BypassNRO"=dword:00000001
@@ -103,20 +106,6 @@
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "EnableLinkedConnections"=dword:00000001
 
-; Remove Linux From Navigation Pane In File Explorer
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{B2B4A4D1-2754-4140-A2EB-9A76D9D7CDC6}]
-@="Linux"
-"System.IsPinnedToNameSpaceTree"=dword:00000000
-
-; Remove Open Linux Shell Here From Right Click Context Menu
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\WSL]
-[-HKEY_CLASSES_ROOT\Directory\shell\WSL]
-[-HKEY_CLASSES_ROOT\Drive\shell\WSL]
-
-; Remove Open Windows Terminal Here From Right Click Context Menu
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
-"{9F156763-7844-4DC4-B2B1-901F640F5155}"=""
-
 ; Remove Open Command Prompt Here From Right Click Context Menu
 [-HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt]
 [-HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt]
@@ -129,18 +118,6 @@
 [-HKEY_CLASSES_ROOT\Directory\shell\PowerShell]
 [-HKEY_CLASSES_ROOT\Drive\shell\PowerShell]
 [-HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\PowerShell]
-[-HKEY_CLASSES_ROOT\DesktopBackground\Shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\LibraryFolder\background\shell\PowerShell7x64]
-[-HKEY_CLASSES_ROOT\DesktopBackground\Shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Directory\ContextMenus\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Directory\shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\Drive\shell\PowerShell7x86]
-[-HKEY_CLASSES_ROOT\LibraryFolder\background\shell\PowerShell7x86]
 
 ; Add Terminal To Shift Right Click Context Menu
 ; Desktop
@@ -330,6 +307,16 @@
 
 [HKEY_CLASSES_ROOT\*\Shell\Hash\Shell\08Menu\Command]
 @="powershell -noexit get-filehash -literalpath \\\"%1\\\" -algorithm SHA1 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm SHA256 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm SHA384 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm SHA512 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm MACTripleDES | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm MD5 | format-list;get-filehash -literalpath \\\"%1\\\" -algorithm RIPEMD160 | format-list"
+
+; Allow Double Clicking To PS1 Files
+[HKEY_CLASSES_ROOT\Applications\powershell.exe\shell\open\command]
+@="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -Command \"& '%1' | Out-String -Width 9999\""
+
+[HKEY_CLASSES_ROOT\.ps1]
+@="Microsoft.PowerShellScript.1"
+
+[HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\Open\Command]
+@="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -Command \"& '%1' | Out-String -Width 9999\""
 
 ; Disable Windows Spotlight on Desktop Background
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
@@ -1164,32 +1151,14 @@ E0,F6,C5,D5,0E,CA,50,00,00
 "TdrDelay"=dword:00000064
 "HwSchMode"=dword:00000002
 
-; Disable AMD Right Click
-[-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\ACE]
+; Disable AMD Context Menu
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
+"{FDADFEE3-02D1-4E7C-A511-380F4C98D73B}"=""
 
-; Disable Nvidia System Tray
-[HKEY_CURRENT_USER\Software\NVIDIA Corporation\Global\CoProcManager]
-"ShowTrayIcon"=dword:00000000
-"ShowContextMenu"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm\Global\Startup\StopOptimusTrayIcon]
-@=dword:00000001
-
-[HKEY_CURRENT_USER\Software\NVIDIA Corporation\NvTray]
-"StartOnLogin"=dword:00000000
-
-; Disable Nvidia Right Click
+; Disable Nvidia Context Menu
 [HKEY_CURRENT_USER\Software\NVIDIA Corporation\Global\NvCplApi\Policies]
 "ContextUIPolicy"=dword:00000000
 
-; Disable Intel System Tray
-[HKEY_CURRENT_USER\Software\Intel\Display\igfxcui\igfxtray]
-"ShowPromotions"=dword:00000001
-"ShowGaming"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Intel\Display\igfxcui\igfxtray\TrayIcon]
-"ShowTrayIcon"=dword:00000000
-
-; Disable Intel Right Click
+; Disable Intel Context Menu
 [-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\igfxcui]
 [-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\igfxDTCM]
