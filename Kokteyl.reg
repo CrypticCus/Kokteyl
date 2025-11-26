@@ -17,20 +17,6 @@
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy]
 "VerifiedAndReputablePolicyState"=dword:00000000
 
-; Dot Net Roll Forward
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
-"DOTNET_ROLL_FORWARD"="LatestMajor"
-
-[HKEY_CURRENT_USER\Environment]
-"DOTNET_ROLL_FORWARD"="LatestMajor"
-
-; Only Use Latest CLR
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework]
-"OnlyUseLatestCLR"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework]
-"OnlyUseLatestCLR"=dword:00000001
-
 ; Bypass Restrictions
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\CompatMarkers]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Shared]
