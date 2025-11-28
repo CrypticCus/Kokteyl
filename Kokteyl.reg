@@ -1086,3 +1086,9 @@ E0,F6,C5,D5,0E,CA,50,00,00
 ; Disable Intel Context Menu
 [-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\igfxcui]
 [-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\igfxDTCM]
+
+; Force .Net Latest Version
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
+; "DOTNET_ROLL_FORWARD"="LatestMajor"
+; [HKEY_CURRENT_USER\Environment]
+; "DOTNET_ROLL_FORWARD"="LatestMajor"
