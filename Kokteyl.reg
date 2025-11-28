@@ -249,7 +249,7 @@
 "HasLUAShield"=""
 "Icon"="imageres.dll,-5323"
 
-[HKEY_CLASSES_ROOT\Drive\Shell\CommandPrompt\Shell\CMD\Command]
+[HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\CMD\Command]
 @="cmd /c echo|set/p=\"%L\"|powerShell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
 
 [HKEY_CLASSES_ROOT\Drive\Shell\Terminal\Shell\PowerShell]
