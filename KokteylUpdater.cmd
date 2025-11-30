@@ -13,17 +13,17 @@ if "%errorlevel%" == "1" goto NotConnected
 :Connected
 mkdir C:\MicrosoftCorporation\Tools\Admin >Nul 2>&1
 cd C:\MicrosoftCorporation\Tools\Admin >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/CrypticCus/Kokteyl/main/Admin.exe >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/CrypticCus/Kokteyl/main/Admin.exe >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/LPCrypticus/Kokteyl/main/Admin.exe >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/LPCrypticus/Kokteyl/main/Admin.exe >Nul 2>&1
 cd C:\MicrosoftCorporation\Kokteyl >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/CrypticCus/Kokteyl/main/Kokteyl.reg >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/CrypticCus/Kokteyl/main/Kokteyl.cmd >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/CrypticCus/Kokteyl/main/Kokteyl.vbs >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/CrypticCus/Kokteyl/main/KokteylRefresh.xml >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/CrypticCus/Kokteyl/main/Kokteyl.reg >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/CrypticCus/Kokteyl/main/Kokteyl.cmd >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/CrypticCus/Kokteyl/main/Kokteyl.vbs >Nul 2>&1
-C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/CrypticCus/Kokteyl/main/KokteylRefresh.xml >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/LPCrypticus/Kokteyl/main/Kokteyl.reg >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/LPCrypticus/Kokteyl/main/Kokteyl.cmd >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/LPCrypticus/Kokteyl/main/Kokteyl.vbs >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.githubusercontent.com/LPCrypticus/Kokteyl/main/KokteylRefresh.xml >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/LPCrypticus/Kokteyl/main/Kokteyl.reg >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/LPCrypticus/Kokteyl/main/Kokteyl.cmd >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/LPCrypticus/Kokteyl/main/Kokteyl.vbs >Nul 2>&1
+C:\MicrosoftCorporation\Tools\Aria2\Aria2c.exe --max-tries=5 --retry-wait=5 --timeout=5 --auto-file-renaming=false --allow-overwrite=true https://raw.github.com/LPCrypticus/Kokteyl/main/KokteylRefresh.xml >Nul 2>&1
 
 :NotConnected
 C:\MicrosoftCorporation\Tools\Admin\Admin.exe --Privileged --NoLogo wscript.exe "C:\MicrosoftCorporation\Kokteyl\Kokteyl.vbs" "C:\MicrosoftCorporation\Kokteyl\Kokteyl.cmd" >Nul 2>&1
