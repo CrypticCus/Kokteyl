@@ -718,6 +718,9 @@
 "AllowAllTrustedApps"=dword:00000001
 
 ; Turn On End Task in Taskbar By Right Click
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings]
+"TaskbarEndTask"=dword:00000001
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeveloperSettings]
 "TaskbarEndTask"=dword:00000001 
 
