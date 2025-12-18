@@ -364,6 +364,29 @@
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
+; Disable Windows Security Virus and Thread Protection Non Critical Notifications
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications]
+"DisableEnhancedNotifications"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender Security Center\Notifications]
+"DisableNotifications"=-
+
+; Disable Windows Security Account Protection Notifications
+[HKEY_CURRENT_USER\Software\Microsoft\Windows Defender Security Center\Account protection]
+"DisableNotifications"=dword:00000001
+"DisableWindowsHelloNotifications"=dword:00000001
+"DisableDynamiclockNotifications"=dword:00000001
+
+; Disable Windows Security Firewall Notifications
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile]
+"DisableNotifications"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
+"DisableNotifications"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
+"DisableNotifications"=dword:00000001
+
 ; Edit Region
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\DeviceRegion]
 "DeviceRegion"=dword:00000244
