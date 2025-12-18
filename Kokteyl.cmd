@@ -16,6 +16,9 @@ reg add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Feeds" /
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarMn /t REG_DWORD /d 0 /f >NUL 2>&1
 reg add "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Chat" /v ChatIcon /t REG_DWORD /d 3 /f >NUL 2>&1
 
+:: Stop Ads From MS
+>nul powershell -Command "Get-AppxPackage *Microsoft.WindowsStore* | Reset-AppxPackage"
+
 :: Uninstall Teams
 goto SkipTeamsUninstall
 taskkill /F /IM "Teams.exe" >NUL 2>&1
